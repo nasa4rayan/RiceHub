@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { themeCatalog } from '@/lib/theme-catalog';
+import { getThemePreviewImage, resolveThemeScreenshots } from '@/lib/github-screenshots';
 import { sanitizeInput, validateDistro, validateWM_DE } from '@/lib/security';
 
 export async function GET(request: NextRequest) {
@@ -10,16 +11,21 @@ export async function GET(request: NextRequest) {
   const normalizedWm = wm ? sanitizeInput(wm.toLowerCase()) : '';
   const normalizedDistro = distro ? sanitizeInput(distro.toLowerCase()) : '';
 
-  let themes = themeCatalog.map((t) => ({
-    slug: t.slug,
-    name: t.name,
-    description: t.description,
-    wm: t.wm,
-    image: t.image,
-    rating: t.rating,
-    downloads: t.downloads,
-    distros: Object.keys(t.dependencies).filter((k) => k !== 'common'),
-  }));
+  let themes = await Promise.all(
+    themeCatalog.map(async (t) => {
+      const screenshots = await resolveThemeScreenshots(t.repo);
+      return {
+        slug: t.slug,
+        name: t.name,
+        description: t.description,
+        wm: t.wm,
+        image: getThemePreviewImage(screenshots),
+        rating: t.rating,
+        downloads: t.downloads,
+        distros: Object.keys(t.dependencies).filter((k) => k !== 'common'),
+      };
+    })
+  );
 
   if (normalizedWm) {
     if (!validateWM_DE(normalizedWm)) return NextResponse.json({ error: 'Invalid wm' }, { status: 400 });

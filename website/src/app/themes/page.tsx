@@ -134,12 +134,11 @@ export default function ThemesPage() {
             <div className="col-span-full text-gray-600">No themes match your filters.</div>
           ) : (
             filteredThemes.map((theme) => (
-              <Link
+              <div
                 key={theme.slug}
-                href={`/themes/${theme.slug}`}
                 className="group bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all"
               >
-                <div className="aspect-video bg-gray-100 relative">
+                <Link href={`/themes/${theme.slug}`} className="block aspect-video bg-gray-100 relative">
                   <Image
                     src={theme.image}
                     alt={`${theme.name} screenshot`}
@@ -148,7 +147,7 @@ export default function ThemesPage() {
                     sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                     priority={false}
                   />
-                </div>
+                </Link>
                 <div className="p-5">
                   <h3 className="font-semibold text-lg mb-2">{theme.name}</h3>
                   <p className="text-gray-600 text-sm mb-4 line-clamp-2">{theme.description}</p>
@@ -161,7 +160,7 @@ export default function ThemesPage() {
                     <span className="text-sm text-gray-600">{theme.downloads.toLocaleString()}</span>
                   </div>
 
-                  <div className="flex gap-2 flex-wrap">
+                  <div className="flex gap-2 flex-wrap mb-4">
                     {theme.distros.map((d) => (
                       <span
                         key={d}
@@ -171,8 +170,15 @@ export default function ThemesPage() {
                       </span>
                     ))}
                   </div>
+
+                  <Link
+                    href={`/themes/${theme.slug}`}
+                    className="inline-flex items-center justify-center w-full bg-primary-600 text-white py-2.5 px-4 rounded-xl hover:bg-primary-700 transition-colors"
+                  >
+                    Install
+                  </Link>
                 </div>
-              </Link>
+              </div>
             ))
           )}
         </div>

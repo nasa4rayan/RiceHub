@@ -5,8 +5,7 @@ export type ThemeCatalogItem = {
   name: string;
   description: string;
   wm: WindowManagerId;
-  image: string; // card image
-  screenshots: [string, string, string]; // gallery (main + 2)
+  repo: string;
   rating: number;
   downloads: number;
   dependencies: {
@@ -23,8 +22,7 @@ export const themeCatalog: ThemeCatalogItem[] = [
     name: 'Tokyo Night Openbox',
     description: 'Clean and minimal Openbox theme with Tokyo Night colors.',
     wm: 'openbox',
-    image: '/themes/tokyo-openbox.png',
-    screenshots: ['/themes/tokyo-openbox.png', '/themes/tokyo-openbox-2.png', '/themes/tokyo-openbox-3.png'],
+    repo: 'https://github.com/ricehub/themes',
     rating: 4.8,
     downloads: 1234,
     dependencies: {
@@ -39,8 +37,7 @@ export const themeCatalog: ThemeCatalogItem[] = [
     name: 'Dracula Hyprland',
     description: 'Official Dracula theme configuration for Hyprland.',
     wm: 'hyprland',
-    image: '/themes/dracula-hyprland.png',
-    screenshots: ['/themes/dracula-hyprland.png', '/themes/dracula-hyprland.png', '/themes/dracula-hyprland.png'],
+    repo: 'https://github.com/ricehub/themes',
     rating: 4.9,
     downloads: 2345,
     dependencies: {
@@ -55,8 +52,7 @@ export const themeCatalog: ThemeCatalogItem[] = [
     name: 'Nord i3',
     description: 'Nord-themed i3 rice with a clean, minimal layout.',
     wm: 'i3',
-    image: '/themes/nord-i3.png',
-    screenshots: ['/themes/nord-i3.png', '/themes/nord-i3.png', '/themes/nord-i3.png'],
+    repo: 'https://github.com/ricehub/themes',
     rating: 4.7,
     downloads: 987,
     dependencies: {
@@ -67,4 +63,3 @@ export const themeCatalog: ThemeCatalogItem[] = [
     },
   },
 ];
-
