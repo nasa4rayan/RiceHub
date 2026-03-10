@@ -1,0 +1,40 @@
+id: nord-i3
+name: Nord i3
+wm_de: i3
+description: Nord color palette for i3 with polybar and rofi, featuring a clean and minimal design.
+version: 1.0.0
+author: ricehub-user
+license: MIT
+homepage: https://github.com/ricehub/themes/tree/main/i3/nord
+screenshots:
+  - assets/screenshot-1.png
+  - assets/screenshot-2.png
+dependencies:
+  common:
+    - picom
+    - rofi
+    - polybar
+    - kitty
+    - feh
+  arch:
+    - ttf-jetbrains-mono-nerd
+  debian:
+    - fonts-jetbrains-mono
+  fedora:
+    - jetbrains-mono-fonts
+fonts:
+  - JetBrainsMono Nerd Font
+icons:
+  - Papirus-Nord
+gtk_theme: Nordic
+terminal: kitty
+compositor: picom
+bar: polybar
+dotfiles_path: dotfiles
+install:
+  script: install.sh
+  requires_sudo: true
+compatibility:
+  arch: verified
+  debian: verified
+  fedora: partial

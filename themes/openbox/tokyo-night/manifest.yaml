@@ -1,0 +1,40 @@
+id: tokyo-night-openbox
+name: Tokyo Night Openbox
+wm_de: openbox
+description: Clean and minimal Openbox theme with Tokyo Night color palette featuring smooth animations and a cohesive design.
+version: 1.0.0
+author: ricehub-user
+license: MIT
+homepage: https://github.com/ricehub/themes/tree/main/openbox/tokyo-night
+screenshots:
+  - assets/screenshot-1.png
+  - assets/screenshot-2.png
+dependencies:
+  common:
+    - picom
+    - rofi
+    - polybar
+    - kitty
+    - feh
+  arch:
+    - ttf-jetbrains-mono-nerd
+  debian:
+    - fonts-jetbrains-mono
+  fedora:
+    - jetbrains-mono-fonts
+fonts:
+  - JetBrainsMono Nerd Font
+icons:
+  - Papirus
+gtk_theme: Tokyo-Night-Dark
+terminal: kitty
+compositor: picom
+bar: polybar
+dotfiles_path: dotfiles
+install:
+  script: install.sh
+  requires_sudo: true
+compatibility:
+  arch: verified
+  debian: verified
+  fedora: partial

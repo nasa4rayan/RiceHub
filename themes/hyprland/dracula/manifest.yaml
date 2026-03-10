@@ -1,0 +1,38 @@
+id: dracula-hyprland
+name: Dracula Hyprland
+wm_de: hyprland
+description: Popular Dracula color scheme for Hyprland with rounded corners and modern aesthetics.
+version: 1.0.0
+author: ricehub-user
+license: MIT
+homepage: https://github.com/ricehub/themes/tree/main/hyprland/dracula
+screenshots:
+  - assets/screenshot-1.png
+  - assets/screenshot-2.png
+dependencies:
+  common:
+    - waybar
+    - rofi
+    - kitty
+    - swaybg
+    - wlogout
+  arch:
+    - ttf-jetbrains-mono-nerd
+  debian:
+    - fonts-jetbrains-mono
+  fedora:
+    - jetbrains-mono-fonts
+fonts:
+  - JetBrainsMono Nerd Font
+icons:
+  - Papirus-Dark
+terminal: kitty
+bar: waybar
+dotfiles_path: dotfiles
+install:
+  script: install.sh
+  requires_sudo: true
+compatibility:
+  arch: verified
+  debian: partial
+  fedora: partial

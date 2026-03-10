@@ -1,0 +1,20 @@
+{
+  "name": "@ricehub/scripts",
+  "version": "1.0.0",
+  "description": "Build and validation scripts for RiceHub",
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint src --ext .ts",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "yaml": "^2.3.4",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "typescript": "^5.3.3",
+    "eslint": "^8.56.0"
+  }
+}
