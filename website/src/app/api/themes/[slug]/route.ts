@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { themeCatalog } from '@/lib/theme-catalog';
+import { getThemeGallery, getThemePreviewImage, resolveThemeScreenshots } from '@/lib/github-screenshots';
 import { sanitizeInput, validateSlug } from '@/lib/security';
 
 export async function GET(
@@ -12,13 +13,15 @@ export async function GET(
   const theme = themeCatalog.find((t) => t.slug === slug);
   if (!theme) return NextResponse.json({ error: 'Not found' }, { status: 404 });
 
+  const screenshots = await resolveThemeScreenshots(theme.repo);
+
   return NextResponse.json({
     slug: theme.slug,
     name: theme.name,
     wm: theme.wm,
     description: theme.description,
-    image: theme.image,
-    screenshots: theme.screenshots,
+    image: getThemePreviewImage(screenshots),
+    screenshots: getThemeGallery(screenshots),
     rating: theme.rating,
     totalRatings: 42,
     downloads: theme.downloads,
